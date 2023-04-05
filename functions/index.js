@@ -21,14 +21,41 @@ exports.dietUpdate = functions.database.ref('/user/{id}').onUpdate((change, cont
 });
 
 function calculateBasalMetabolicRate(userData) {
+    let activityLevelFactor = 1.2;
+    let dietObjective = 0;
+
+    if (userData.dietObjective == 'maintainWeight') {
+        dietObjective = 0;
+    }
+    if (userData.dietObjective == 'loseWeight') {
+        dietObjective = -500;
+    }
+    if (userData.dietObjective == 'gainWeight') {
+        dietObjective = 500;
+    }
+    if (userData.activityLevel == 'sedentary') {
+        activityLevelFactor = 1.2
+    }
+    if (userData.activityLevel == 'lightlyActive') {
+        activityLevelFactor = 1.375
+    }
+    if (userData.activityLevel == 'moderatelyActive') {
+        activityLevelFactor = 1.55
+    }
+    if (userData.activityLevel == 'veryActive') {
+        activityLevelFactor = 1.725
+    }
+    if (userData.activityLevel == 'superActive') {
+        activityLevelFactor = 1.9
+    }
     if (userData.gender == 'male') {
-        return 66.47 + (13.75 * userData.weight)
+        return (66.47 + (13.75 * userData.weight)
             + (5.003 * userData.height)
-            - (6.755 * userData.age);
+            - (6.755 * userData.age)) * activityLevelFactor + dietObjective;
     } else {
-        return 655.1 + (9.563 * userData.weight)
+        return (655.1 + (9.563 * userData.weight)
             + (1.85 * userData.height)
-            - (4.676 * userData.age);
+            - (4.676 * userData.age)) * activityLevelFactor + dietObjective;
     }
 }
 
@@ -86,13 +113,6 @@ const calculateDiet = (foodList, totalProtein, totalLipid, bmrResult) => {
                 carboResult += proteinCarboPerGram;
                 lipidResult += proteinLipidPerGram;
                 totalProteinGrams++;
-
-
-                // proteinResult += carboProteinPerGram;
-                // totalKcal += carboKcalPerGram;
-                // carboResult += carboPerGram;
-                // lipidResult += carboLipidPerGram;
-                // totalCarboGrams++;
             }
 
         }
@@ -105,13 +125,7 @@ const calculateDiet = (foodList, totalProtein, totalLipid, bmrResult) => {
                 totalProteinGrams--;
             }
         }
-        // while (lipidResult > totalLipid) {
-        //     proteinResult -= lipidProteinPerGram;
-        //     totalKcal -= lipidKcalPerGram;
-        //     carboResult -= lipidCarboPerGram;
-        //     lipidResult -= lipidPerGram;
-        //     totalLipidGrams--;
-        // }
+
         proteinResult += carboProteinPerGram;
         totalKcal += carboKcalPerGram;
         carboResult += carboPerGram;
@@ -119,27 +133,7 @@ const calculateDiet = (foodList, totalProtein, totalLipid, bmrResult) => {
         totalCarboGrams++;
 
     }
-    // while (proteinResult < totalProtein) {
-    //     proteinResult += proteinPerGram;
-    //     totalKcal += proteinKcalPerGram;
-    //     carboResult += proteinCarboPerGram;
-    //     lipidResult += proteinLipidPerGram;
-    //     totalProteinGrams++;
-    // }
-    // while (lipidResult < totalLipid) {
-    //     proteinResult += lipidProteinPerGram;
-    //     totalKcal += lipidKcalPerGram;
-    //     carboResult += lipidCarboPerGram;
-    //     lipidResult += lipidPerGram;
-    //     totalLipidGrams++;
-    // }
-    // while (totalKcal < bmrResult) {
-    //     proteinResult += carboProteinPerGram;
-    //     totalKcal += carboKcalPerGram;
-    //     carboResult += carboPerGram;
-    //     lipidResult += carboLipidPerGram;
-    //     totalCarboGrams++;
-    // }
+
     const diet = {
         totalKcal: totalKcal,
         protein: totalProteinGrams,
@@ -154,7 +148,7 @@ const calculateDiet = (foodList, totalProtein, totalLipid, bmrResult) => {
 }
 
 const calculateTotalMacros = (userData) => {
-    const totalProtein = userData.weight * 2;
+    const totalProtein = userData.weight * userData.proteinPerKilogramOfBodyWeight;
     const totalLipid = userData.weight * 1;
     const macros = {
         totalProtein: totalProtein,
