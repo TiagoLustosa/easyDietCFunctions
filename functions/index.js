@@ -4,8 +4,31 @@ exports.diet = functions.database.ref('/user/{id}').onCreate((snapshot, context)
     const userData = snapshot.val();
     const bmr = calculateBasalMetabolicRate(userData);
     const macros = calculateTotalMacros(userData);
-    const diet = calculateDiet(userData.foods, macros.totalProtein, macros.totalLipid, bmr);
-    return snapshot.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+    if (context.params.id == 'Sy67dgB9B6a8dZyRqaJQ8aHS84O2') {
+        totalProteinInMeal = macros.totalProtein
+        totalLipidInMeal = macros.totalLipid
+        totalCaloriesInMeal = bmr
+
+        totalProteinFirstMeal = totalProteinInMeal * 0.2
+        totalLipidFirstMeal = totalLipidInMeal * 0.2
+        totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
+
+        totalProteinSecondMeal = totalProteinInMeal * 0.3
+        totalLipidSecondMeal = totalLipidInMeal * 0.3
+        totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.3
+
+        totalProteinThirdMeal = totalProteinInMeal * 0.2
+        totalLipidThirdMeal = totalLipidInMeal * 0.2
+        totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
+
+        const diet = calculateDietFourMeals(userData);
+        return snapshot.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+    }
+    else {
+        const diet = calculateDiet(userData.foods, macros.totalProtein, macros.totalLipid, bmr);
+
+        return change.after.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+    }
 });
 
 exports.dietUpdate = functions.database.ref('/user/{id}').onUpdate((change, context) => {
@@ -15,9 +38,31 @@ exports.dietUpdate = functions.database.ref('/user/{id}').onUpdate((change, cont
     const userData = change.after.val();
     const bmr = calculateBasalMetabolicRate(userData);
     const macros = calculateTotalMacros(userData);
-    const diet = calculateDiet(userData.foods, macros.totalProtein, macros.totalLipid, bmr);
+    if (context.params.id == 'Sy67dgB9B6a8dZyRqaJQ8aHS84O2') {
+        totalProteinInMeal = macros.totalProtein
+        totalLipidInMeal = macros.totalLipid
+        totalCaloriesInMeal = bmr
 
-    return change.after.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+        totalProteinFirstMeal = totalProteinInMeal * 0.2
+        totalLipidFirstMeal = totalLipidInMeal * 0.2
+        totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
+
+        totalProteinSecondMeal = totalProteinInMeal * 0.3
+        totalLipidSecondMeal = totalLipidInMeal * 0.3
+        totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.3
+
+        totalProteinThirdMeal = totalProteinInMeal * 0.2
+        totalLipidThirdMeal = totalLipidInMeal * 0.2
+        totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
+
+        const diet = calculateDietFourMeals(userData);
+        return change.after.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+    }
+    else {
+        const diet = calculateDiet(userData.foods, macros.totalProtein, macros.totalLipid, bmr);
+
+        return change.after.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+    }
 });
 
 function calculateBasalMetabolicRate(userData) {
@@ -156,8 +201,7 @@ const calculateTotalMacros = (userData) => {
     }
     return macros;
 }
-/* 4 meals working
-const functions = require("firebase-functions");
+
 
 let totalProteinInMeal;
 let totalLipidInMeal;
@@ -178,59 +222,59 @@ let totalCaloriesInThirdMeal;
 let totalProteinInFourthMeal
 let totalLipidInFourthMeal
 let totalCaloriesInFourthMeal
-exports.diet = functions.database.ref('/user/{id}').onCreate((snapshot, context) => {
-    const userData = snapshot.val();
-    const bmr = calculateBasalMetabolicRate(userData);
-    const macros = calculateTotalMacros(userData);
+// exports.diet = functions.database.ref('/user/{id}').onCreate((snapshot, context) => {
+//     const userData = snapshot.val();
+//     const bmr = calculateBasalMetabolicRate(userData);
+//     const macros = calculateTotalMacros(userData);
 
-    totalProteinInMeal = macros.totalProtein
-    totalLipidInMeal = macros.totalLipid
-    totalCaloriesInMeal = bmr
+//     totalProteinInMeal = macros.totalProtein
+//     totalLipidInMeal = macros.totalLipid
+//     totalCaloriesInMeal = bmr
 
-    totalProteinFirstMeal = totalProteinInMeal * 0.2
-    totalLipidFirstMeal = totalLipidInMeal * 0.2
-    totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
+//     totalProteinFirstMeal = totalProteinInMeal * 0.2
+//     totalLipidFirstMeal = totalLipidInMeal * 0.2
+//     totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
 
-    totalProteinSecondMeal = totalProteinInMeal * 0.3
-    totalLipidSecondMeal = totalLipidInMeal * 0.3
-    totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.3
+//     totalProteinSecondMeal = totalProteinInMeal * 0.3
+//     totalLipidSecondMeal = totalLipidInMeal * 0.3
+//     totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.3
 
-    totalProteinThirdMeal = totalProteinInMeal * 0.2
-    totalLipidThirdMeal = totalLipidInMeal * 0.2
-    totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
+//     totalProteinThirdMeal = totalProteinInMeal * 0.2
+//     totalLipidThirdMeal = totalLipidInMeal * 0.2
+//     totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
 
-    const diet = calculateDiet(userData);
-    return snapshot.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
-});
+//     const diet = calculateDiet(userData);
+//     return snapshot.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+// });
 
-exports.dietUpdate = functions.database.ref('/user/{id}').onUpdate((change, context) => {
-    if (!change.after.exists()) {
-        return null;
-    }
-    const userData = change.after.val();
-    const bmr = calculateBasalMetabolicRate(userData);
-    const macros = calculateTotalMacros(userData);
-    totalProteinInMeal = macros.totalProtein
-    totalLipidInMeal = macros.totalLipid
-    totalCaloriesInMeal = bmr
+// exports.dietUpdate = functions.database.ref('/user/{id}').onUpdate((change, context) => {
+//     if (!change.after.exists()) {
+//         return null;
+//     }
+//     const userData = change.after.val();
+//     const bmr = calculateBasalMetabolicRate(userData);
+//     const macros = calculateTotalMacros(userData);
+//     totalProteinInMeal = macros.totalProtein
+//     totalLipidInMeal = macros.totalLipid
+//     totalCaloriesInMeal = bmr
 
 
-    totalProteinFirstMeal = totalProteinInMeal * 0.2
-    totalLipidFirstMeal = totalLipidInMeal * 0.2
-    totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
+//     totalProteinFirstMeal = totalProteinInMeal * 0.2
+//     totalLipidFirstMeal = totalLipidInMeal * 0.2
+//     totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
 
-    totalProteinSecondMeal = totalProteinInMeal * 0.3
-    totalLipidSecondMeal = totalLipidInMeal * 0.3
-    totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.3
+//     totalProteinSecondMeal = totalProteinInMeal * 0.3
+//     totalLipidSecondMeal = totalLipidInMeal * 0.3
+//     totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.3
 
-    totalProteinThirdMeal = totalProteinInMeal * 0.2
-    totalLipidThirdMeal = totalLipidInMeal * 0.2
-    totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
+//     totalProteinThirdMeal = totalProteinInMeal * 0.2
+//     totalLipidThirdMeal = totalLipidInMeal * 0.2
+//     totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
 
-    const diet = calculateDiet(userData);
+//     const diet = calculateDiet(userData);
 
-    return change.after.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
-});
+//     return change.after.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+// });
 
 function calculateBasalMetabolicRate(userData) {
     let activityLevelFactor = 1.2;
@@ -393,10 +437,9 @@ const calculateMeal = (foodList, totalProtein, totalLipid, totalCaloriesInMeal) 
     return mealResult;
 }
 
-function calculateDiet(userData) {
+function calculateDietFourMeals(userData) {
     const firstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
-    console.log(totalProteinFirstMeal)
-    console.log(totalCaloriesFirstMeal)
+
     const secondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
 
 
@@ -419,11 +462,6 @@ function calculateDiet(userData) {
         fourthMealResult,
         totalMacrosInDiet
     }
-    console.table(firstMealResult)
-    console.table(secondMealResult)
-    console.table(thirdMealResult)
-    console.table(fourthMealResult)
-    console.log(fullDiet)
     return fullDiet;
 }
 
@@ -515,13 +553,4 @@ function calculateDiet(userData) {
 //     return diet;
 // }
 
-const calculateTotalMacros = (userData) => {
-    const totalProtein = userData.weight * userData.proteinPerKilogramOfBodyWeight;
-    const totalLipid = userData.weight * 1;
-    const macros = {
-        totalProtein: totalProtein,
-        totalLipid: totalLipid,
-    }
-    return macros;
-}
-*/
+
