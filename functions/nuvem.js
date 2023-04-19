@@ -299,6 +299,10 @@ let totalProteinInFourthMeal
 let totalLipidInFourthMeal
 let totalCaloriesInFourthMeal
 
+let totalProteinInFifthMeal
+let totalLipidInFifthMeal
+let totalCaloriesInFifthMeal
+
 function calculateBasalMetabolicRate(userData) {
     let activityLevelFactor = 1.2;
     let dietObjective = 0;
@@ -433,7 +437,7 @@ const calculateMeal = (foodList, totalProtein, totalLipid, totalCaloriesInMeal) 
 }
 
 function calculateDiet(userData) {
-
+    numberOfMeals(userData.numberOfMeals)
     if (userData.numberOfMeals == 2) {
         console.log('to aqui no 2')
         const firstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
@@ -578,74 +582,75 @@ const macros = calculateTotalMacros(userData);
 totalProteinInMeal = macros.totalProtein
 totalLipidInMeal = macros.totalLipid
 totalCaloriesInMeal = bmr
-if (userData.numberOfMeals == 2) {
-    totalProteinFirstMeal = totalProteinInMeal * 0.5
-    totalLipidFirstMeal = totalLipidInMeal * 0.5
-    totalCaloriesFirstMeal = totalCaloriesInMeal * 0.5
+function numberOfMeals(numberOfMeals) {
+    if (numberOfMeals == 2) {
+        totalProteinFirstMeal = totalProteinInMeal * 0.5
+        totalLipidFirstMeal = totalLipidInMeal * 0.5
+        totalCaloriesFirstMeal = totalCaloriesInMeal * 0.5
 
-    totalProteinSecondMeal = totalProteinInMeal * 0.5
-    totalLipidSecondMeal = totalLipidInMeal * 0.5
-    totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.5
-} else if (userData.numberOfMeals == 3) {
-    console.log('to no setande a % do 3')
-    totalProteinFirstMeal = totalProteinInMeal * 0.30
-    totalLipidFirstMeal = totalLipidInMeal * 0.30
-    totalCaloriesFirstMeal = totalCaloriesInMeal * 0.30
+        totalProteinSecondMeal = totalProteinInMeal * 0.5
+        totalLipidSecondMeal = totalLipidInMeal * 0.5
+        totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.5
+    } else if (numberOfMeals == 3) {
+        totalProteinFirstMeal = totalProteinInMeal * 0.30
+        totalLipidFirstMeal = totalLipidInMeal * 0.30
+        totalCaloriesFirstMeal = totalCaloriesInMeal * 0.30
 
-    totalProteinSecondMeal = totalProteinInMeal * 0.35
-    totalLipidSecondMeal = totalLipidInMeal * 0.35
-    totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.35
+        totalProteinSecondMeal = totalProteinInMeal * 0.35
+        totalLipidSecondMeal = totalLipidInMeal * 0.35
+        totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.35
 
-}
-else if (userData.numberOfMeals == 4) {
-    totalProteinFirstMeal = totalProteinInMeal * 0.2
-    totalLipidFirstMeal = totalLipidInMeal * 0.2
-    totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
+    }
+    else if (numberOfMeals == 4) {
+        totalProteinFirstMeal = totalProteinInMeal * 0.2
+        totalLipidFirstMeal = totalLipidInMeal * 0.2
+        totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
 
-    totalProteinSecondMeal = totalProteinInMeal * 0.3
-    totalLipidSecondMeal = totalLipidInMeal * 0.3
-    totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.3
+        totalProteinSecondMeal = totalProteinInMeal * 0.3
+        totalLipidSecondMeal = totalLipidInMeal * 0.3
+        totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.3
 
-    totalProteinThirdMeal = totalProteinInMeal * 0.2
-    totalLipidThirdMeal = totalLipidInMeal * 0.2
-    totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
-}
-else if (userData.numberOfMeals == 5) {
-    totalProteinFirstMeal = totalProteinInMeal * 0.2
-    totalLipidFirstMeal = totalLipidInMeal * 0.2
-    totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
+        totalProteinThirdMeal = totalProteinInMeal * 0.2
+        totalLipidThirdMeal = totalLipidInMeal * 0.2
+        totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
+    }
+    else if (numberOfMeals == 5) {
+        totalProteinFirstMeal = totalProteinInMeal * 0.2
+        totalLipidFirstMeal = totalLipidInMeal * 0.2
+        totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
 
-    totalProteinSecondMeal = totalProteinInMeal * 0.2
-    totalLipidSecondMeal = totalLipidInMeal * 0.2
-    totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.2
+        totalProteinSecondMeal = totalProteinInMeal * 0.2
+        totalLipidSecondMeal = totalLipidInMeal * 0.2
+        totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.2
 
-    totalProteinThirdMeal = totalProteinInMeal * 0.2
-    totalLipidThirdMeal = totalLipidInMeal * 0.2
-    totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
+        totalProteinThirdMeal = totalProteinInMeal * 0.2
+        totalLipidThirdMeal = totalLipidInMeal * 0.2
+        totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
 
-    totalProteinFourthMeal = totalProteinInMeal * 0.2
-    totalLipidFourthMeal = totalLipidInMeal * 0.2
-    totalCaloriesInFourthMeal = totalCaloriesInMeal * 0.2
-} else {
-    totalProteinFirstMeal = totalProteinInMeal * 0.125
-    totalLipidFirstMeal = totalLipidInMeal * 0.125
-    totalCaloriesFirstMeal = totalCaloriesInMeal * 0.125
+        totalProteinFourthMeal = totalProteinInMeal * 0.2
+        totalLipidFourthMeal = totalLipidInMeal * 0.2
+        totalCaloriesInFourthMeal = totalCaloriesInMeal * 0.2
+    } else {
+        totalProteinFirstMeal = totalProteinInMeal * 0.125
+        totalLipidFirstMeal = totalLipidInMeal * 0.125
+        totalCaloriesFirstMeal = totalCaloriesInMeal * 0.125
 
-    totalProteinSecondMeal = totalProteinInMeal * 0.125
-    totalLipidSecondMeal = totalLipidInMeal * 0.125
-    totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.125
+        totalProteinSecondMeal = totalProteinInMeal * 0.125
+        totalLipidSecondMeal = totalLipidInMeal * 0.125
+        totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.125
 
-    totalProteinThirdMeal = totalProteinInMeal * 0.25
-    totalLipidThirdMeal = totalLipidInMeal * 0.25
-    totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.25
+        totalProteinThirdMeal = totalProteinInMeal * 0.25
+        totalLipidThirdMeal = totalLipidInMeal * 0.25
+        totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.25
 
-    totalProteinFourthMeal = totalProteinInMeal * 0.125
-    totalLipidFourthMeal = totalLipidInMeal * 0.125
-    totalCaloriesInFourthMeal = totalCaloriesInMeal * 0.125
+        totalProteinFourthMeal = totalProteinInMeal * 0.125
+        totalLipidFourthMeal = totalLipidInMeal * 0.125
+        totalCaloriesInFourthMeal = totalCaloriesInMeal * 0.125
 
-    totalProteinFifthMeal = totalProteinInMeal * 0.25
-    totalLipidFifthMeal = totalLipidInMeal * 0.25
-    totalCaloriesInFifthMeal = totalCaloriesInMeal * 0.25
+        totalProteinFifthMeal = totalProteinInMeal * 0.25
+        totalLipidFifthMeal = totalLipidInMeal * 0.25
+        totalCaloriesInFifthMeal = totalCaloriesInMeal * 0.25
+    }
 }
 
 calculateDiet(userData);
