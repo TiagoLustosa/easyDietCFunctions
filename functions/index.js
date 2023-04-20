@@ -5,7 +5,9 @@ exports.diet = functions.database.ref('/user/{id}').onCreate((snapshot, context)
     const userData = snapshot.val();
     const bmr = calculateBasalMetabolicRate(userData);
     const macros = calculateTotalMacros(userData);
-
+    totalProteinInMeal = macros.totalProtein
+    totalLipidInMeal = macros.totalLipid
+    totalCaloriesInMeal = bmr
     const diet = calculateDiet(userData);
     return snapshot.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
 
@@ -18,7 +20,9 @@ exports.dietUpdate = functions.database.ref('/user/{id}').onUpdate((change, cont
     const userData = change.after.val();
     const bmr = calculateBasalMetabolicRate(userData);
     const macros = calculateTotalMacros(userData);
-
+    totalProteinInMeal = macros.totalProtein
+    totalLipidInMeal = macros.totalLipid
+    totalCaloriesInMeal = bmr
     const diet = calculateDiet(userData);
     return change.after.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
 });
@@ -243,7 +247,7 @@ function calculateDiet(userData) {
 
         return fullDiet;
     }
-    else if (userData.numberOfMeals == 4 || user.userData == null) {
+    else if (userData.numberOfMeals == 4 || userData.numberOfMeals == null) {
         const firstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
 
         const secondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
@@ -333,6 +337,7 @@ function calculateDiet(userData) {
                 secondMealResult,
                 thirdMealResult,
                 fourthMealResult,
+                fifthMealResult,
                 sixthMealResult,
             },
             totalMacrosInDiet
