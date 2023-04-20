@@ -323,7 +323,7 @@ function calculateDiet(userData) {
         totalLipidInSixthMeal = totalLipidInMeal - (aFirstMealResult.totalLipidInMeal + bSecondMealResult.totalLipidInMeal + cThirdMealResult.totalLipidInMeal + dFourthMealResult.totalLipidInMeal + eFifthMealResult.totalLipidInMeal)
         totalCaloriesInSixthMeal = totalCaloriesInMeal - (aFirstMealResult.totalKcal + bSecondMealResult.totalKcal + cThirdMealResult.totalKcal + dFourthMealResult.totalKcal + eFifthMealResult.totalKcal)
 
-        const fSixthMealResult = calculateMeal(userData.fifthMealFoodList, totalProteinInSixthMeal, totalLipidInSixthMeal, totalCaloriesInSixthMeal)
+        const fSixthMealResult = calculateMeal(userData.sixthMealFoodList, totalProteinInSixthMeal, totalLipidInSixthMeal, totalCaloriesInSixthMeal)
 
         const totalMacrosInDiet = {
             totalCaloriesInDiet: (aFirstMealResult.totalKcal + bSecondMealResult.totalKcal + cThirdMealResult.totalKcal + dFourthMealResult.totalKcal + eFifthMealResult.totalKcal + fSixthMealResult.totalKcal),
