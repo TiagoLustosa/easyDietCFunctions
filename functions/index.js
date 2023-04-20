@@ -1,274 +1,27 @@
 
 const functions = require("firebase-functions");
 
-const userData = {
-    "age": 49,
-    "weight": 71,
-    "height": 190,
-    "activityLevel": "lightlyActive",
-    "gender": "female",
-    "proteinPerKilogramOfBodyWeight": 2.0,
-    "dietObjective": "loseWeight",
-    "numberOfMeals": 6,
-    "firstMealFoodList": [
-        {
-            "baseQuantity": 100,
-            "base_unit": "g",
-            "carbohydrate": 0,
-            "category_id": 6,
-            "description": "Carne, bovina, acém, moído, cozido",
-            "energyInKcal": 212.4204,
-            "fiber": 0,
-            "highProtein": true,
-            "id": 326,
-            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/carne-moida-cozida.jpg?alt=media&token=773ea7bd-59b4-4565-9c7b-75edf3718518",
-            "lipid": 10.9166666666667,
-            "protein": 26.6866666666667
-        },
-        {
-            "baseQuantity": 100,
-            "base_unit": "g",
-            "carbohydrate": 18.702486509641,
-            "description": "Amendoim, torrado, salgado",
-            "energyInKcal": 605.781092917019,
-            "fiber": 7.76333333333333,
-            "highLipid": true,
-            "id": 558,
-            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/amendoim-torrado.jpg?alt=media&token=c015c15a-e715-4f32-ada3-e7fbfcea56a4",
-            "lipid": 53.9633333333333,
-            "protein": 22.4751801570257
-        },
-        {
-            "baseQuantity": 100,
-            "base_unit": "g",
-            "carbohydrate": 30.09,
-            "category_id": 2,
-            "description": "Mandioca, cozida",
-            "energyInKcal": 125.35825,
-            "fiber": 1.55666666666667,
-            "highCarb": true,
-            "id": 129,
-            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/mandioca-cozida.jpg?alt=media&token=48631a39-3b12-4131-be0d-f087d3b78ef3",
-            "lipid": 0.298333333333333,
-            "protein": 0.575
-        }
-    ],
-    "secondMealFoodList": [
-        {
-            "baseQuantity": 100,
-            "base_unit": "g",
-            "carbohydrate": 0,
-            "category_id": 6,
-            "description": "Frango, peito, sem pele, cozido",
-            "energyInKcal": 162.874763346314,
-            "fiber": 0,
-            "highProtein": true,
-            "id": 408,
-            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/frango-peito-grelhado.jpg?alt=media&token=71e89715-68b0-42f6-be94-496faba9efff",
-            "lipid": 3.16,
-            "protein": 31.46875
-        },
-        {
-            "baseQuantity": 100,
-            "base_unit": "g",
-            "carbohydrate": 18.702486509641,
-            "description": "Amendoim, torrado, salgado",
-            "energyInKcal": 605.781092917019,
-            "fiber": 7.76333333333333,
-            "highLipid": true,
-            "id": 558,
-            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/amendoim-torrado.jpg?alt=media&token=c015c15a-e715-4f32-ada3-e7fbfcea56a4",
-            "lipid": 53.9633333333333,
-            "protein": 22.4751801570257
-        },
-        {
-            "baseQuantity": 100,
-            "base_unit": "g",
-            "carbohydrate": 18.4223333333333,
-            "category_id": 2,
-            "description": "Batata, doce, cozida",
-            "energyInKcal": 76.7596105034352,
-            "fiber": 2.212,
-            "highCarb": true,
-            "id": 88,
-            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/batata-doce.jpg?alt=media&token=4e0066dd-3a6d-4ad2-8c40-e5a6c50b8a19",
-            "lipid": 0.087666666666667,
-            "protein": 0.641666666666667
-        }
-    ],
-    "thirdMealFoodList": [
-        {
-            "baseQuantity": 100,
-            "base_unit": "g",
-            "carbohydrate": 0,
-            "category_id": 6,
-            "description": "Frango, sobrecoxa, sem pele, assada",
-            "energyInKcal": 232.883396666667,
-            "fiber": 0,
-            "highProtein": true,
-            "id": 413,
-            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/frango-sobrecoxa.jpg?alt=media&token=1f27ee09-4415-4873-ae90-749ae42536f9",
-            "lipid": 12.0073333333333,
-            "protein": 29.175
-        },
-        {
-            "baseQuantity": 100,
-            "base_unit": "g",
-            "carbohydrate": 18.702486509641,
-            "description": "Amendoim, torrado, salgado",
-            "energyInKcal": 605.781092917019,
-            "fiber": 7.76333333333333,
-            "highLipid": true,
-            "id": 558,
-            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/amendoim-torrado.jpg?alt=media&token=c015c15a-e715-4f32-ada3-e7fbfcea56a4",
-            "lipid": 53.9633333333333,
-            "protein": 22.4751801570257
-        },
-        {
-            "baseQuantity": 100,
-            "base_unit": "g",
-            "carbohydrate": 18.4223333333333,
-            "category_id": 2,
-            "description": "Batata, doce, cozida",
-            "energyInKcal": 76.7596105034352,
-            "fiber": 2.212,
-            "highCarb": true,
-            "id": 88,
-            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/batata-doce.jpg?alt=media&token=4e0066dd-3a6d-4ad2-8c40-e5a6c50b8a19",
-            "lipid": 0.087666666666667,
-            "protein": 0.641666666666667
-        }
-    ],
-    "fourthMealFoodList": [
-        {
-            "baseQuantity": 100,
-            "base_unit": "g",
-            "carbohydrate": 0,
-            "category_id": 6,
-            "description": "Frango, sobrecoxa, sem pele, assada",
-            "energyInKcal": 232.883396666667,
-            "fiber": 0,
-            "highProtein": true,
-            "id": 413,
-            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/frango-sobrecoxa.jpg?alt=media&token=1f27ee09-4415-4873-ae90-749ae42536f9",
-            "lipid": 12.0073333333333,
-            "protein": 29.175
-        },
-        {
-            "baseQuantity": 100,
-            "base_unit": "g",
-            "carbohydrate": 0,
-            "category_id": 4,
-            "description": "Azeite, de oliva, extra virgem",
-            "energyInKcal": 884,
-            "fiber": 0,
-            "highLipid": true,
-            "id": 260,
-            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/azeite-oliva.jpg?alt=media&token=4a7b3407-9257-4717-836f-c4f81740729e",
-            "lipid": 100,
-            "protein": 0
-        },
-        {
-            "baseQuantity": 100,
-            "base_unit": "g",
-            "carbohydrate": 11.94375,
-            "category_id": 2,
-            "description": "Batata, inglesa, cozida",
-            "energyInKcal": 51.5884766362707,
-            "fiber": 1.34333333333333,
-            "highCarb": true,
-            "id": 91,
-            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/batata-inglesa.jpg?alt=media&token=4d6b4ed7-dc90-4e1c-b5c6-b1451e74e1c1",
-            "lipid": 0,
-            "protein": 1.16458333333333
-        }
-    ],
-    "fifthMealFoodList": [{
-        "baseQuantity": 100,
-        "base_unit": "g",
-        "carbohydrate": 0,
-        "category_id": 6,
-        "description": "Frango, peito, sem pele, cozido",
-        "energyInKcal": 162.874763346314,
-        "fiber": 0,
-        "highProtein": true,
-        "id": 408,
-        "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/frango-peito-grelhado.jpg?alt=media&token=71e89715-68b0-42f6-be94-496faba9efff",
-        "lipid": 3.16,
-        "protein": 31.46875
-    },
-    {
-        "baseQuantity": 100,
-        "base_unit": "g",
-        "carbohydrate": 0,
-        "category_id": 4,
-        "description": "Azeite, de oliva, extra virgem",
-        "energyInKcal": 884,
-        "fiber": 0,
-        "highLipid": true,
-        "id": 260,
-        "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/azeite-oliva.jpg?alt=media&token=4a7b3407-9257-4717-836f-c4f81740729e",
-        "lipid": 100,
-        "protein": 0
-    },
-    {
-        "baseQuantity": 100,
-        "base_unit": "g",
-        "carbohydrate": 30.09,
-        "category_id": 2,
-        "description": "Mandioca, cozida",
-        "energyInKcal": 125.35825,
-        "fiber": 1.55666666666667,
-        "highCarb": true,
-        "id": 129,
-        "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/mandioca-cozida.jpg?alt=media&token=48631a39-3b12-4131-be0d-f087d3b78ef3",
-        "lipid": 0.298333333333333,
-        "protein": 0.575
-    },],
-    "sixthMealFoodList": [{
-        "baseQuantity": 100,
-        "base_unit": "g",
-        "carbohydrate": 0,
-        "category_id": 6,
-        "description": "Carne, bovina, acém, moído, cozido",
-        "energyInKcal": 212.4204,
-        "fiber": 0,
-        "highProtein": true,
-        "id": 326,
-        "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/carne-moida-cozida.jpg?alt=media&token=773ea7bd-59b4-4565-9c7b-75edf3718518",
-        "lipid": 10.9166666666667,
-        "protein": 26.6866666666667
-    },
-    {
-        "baseQuantity": 100,
-        "base_unit": "g",
-        "carbohydrate": 29.134966000557,
-        "category_id": 15,
-        "description": "Castanha-de-caju, torrada, salgada",
-        "energyInKcal": 570.167626501619,
-        "fiber": 3.663,
-        "highLipid": true,
-        "id": 588,
-        "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/castanha-caju.jpg?alt=media&token=4c4cfe2b-8689-4170-b2c7-0d9c6fa04cf3",
-        "lipid": 46.2796666666667,
-        "protein": 18.5093673327764
-    },
-    {
-        "baseQuantity": 100,
-        "base_unit": "g",
-        "carbohydrate": 25.80975,
-        "category_id": 1,
-        "description": "Arroz, integral, cozido",
-        "energyInKcal": 123.5348925,
-        "fiber": 2.74933333333333,
-        "highCarb": true,
-        "id": 1,
-        "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/arroz-integral.jpg?alt=media&token=d5cae75f-ab6b-4bea-9c2f-c310122cf303",
-        "lipid": 1.00033333333333,
-        "protein": 2.58825
-    },]
-}
+exports.diet = functions.database.ref('/user/{id}').onCreate((snapshot, context) => {
+    const userData = snapshot.val();
+    const bmr = calculateBasalMetabolicRate(userData);
+    const macros = calculateTotalMacros(userData);
 
+    const diet = calculateDiet(userData);
+    return snapshot.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+
+});
+
+exports.dietUpdate = functions.database.ref('/user/{id}').onUpdate((change, context) => {
+    if (!change.after.exists()) {
+        return null;
+    }
+    const userData = change.after.val();
+    const bmr = calculateBasalMetabolicRate(userData);
+    const macros = calculateTotalMacros(userData);
+
+    const diet = calculateDiet(userData);
+    return change.after.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+});
 
 const calculateTotalMacros = (userData) => {
     const totalProtein = userData.weight * userData.proteinPerKilogramOfBodyWeight;
@@ -441,7 +194,7 @@ const calculateMeal = (foodList, totalProtein, totalLipid, totalCaloriesInMeal) 
 function calculateDiet(userData) {
     numberOfMeals(userData.numberOfMeals)
     if (userData.numberOfMeals == 2) {
-        console.log('to aqui no 2')
+
         const firstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
         const secondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
         const totalMacrosInDiet = {
@@ -451,14 +204,16 @@ function calculateDiet(userData) {
             totalCarboInDiet: (firstMealResult.totalCarboInMeal + secondMealResult.totalCarboInMeal)
         }
         const fullDiet = {
-            firstMealResult,
-            secondMealResult,
+            meals: {
+                firstMealResult,
+                secondMealResult,
+            },
             totalMacrosInDiet
         }
-        console.table(fullDiet)
+
         return fullDiet;
     } else if (userData.numberOfMeals == 3) {
-        console.log('to aqui no 3')
+
         const firstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
         const secondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
 
@@ -466,9 +221,9 @@ function calculateDiet(userData) {
         totalLipidInThirdMeal = totalLipidInMeal - (firstMealResult.totalLipidInMeal + secondMealResult.totalLipidInMeal)
         totalCaloriesInThirdMeal = totalCaloriesInMeal - (firstMealResult.totalKcal + secondMealResult.totalKcal)
 
-        console.log(totalProteinInThirdMeal)
-        console.log(totalLipidInThirdMeal)
-        console.log(totalCaloriesInThirdMeal)
+
+
+
         const thirdMealResult = calculateMeal(userData.thirdMealFoodList, totalProteinInThirdMeal, totalLipidInThirdMeal, totalCaloriesInThirdMeal)
         const totalMacrosInDiet = {
             totalCaloriesInDiet: (firstMealResult.totalKcal + secondMealResult.totalKcal + thirdMealResult.totalKcal),
@@ -477,16 +232,18 @@ function calculateDiet(userData) {
             totalCarboInDiet: (firstMealResult.totalCarboInMeal + secondMealResult.totalCarboInMeal + thirdMealResult.totalCarboInMeal)
         }
         const fullDiet = {
-            firstMealResult,
-            secondMealResult,
-            thirdMealResult,
+            meals: {
+                firstMealResult,
+                secondMealResult,
+                thirdMealResult,
+            },
             totalMacrosInDiet
         }
 
-        console.table(fullDiet)
+
         return fullDiet;
     }
-    else if (userData.numberOfMeals == 4) {
+    else if (userData.numberOfMeals == 4 || user.userData == null) {
         const firstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
 
         const secondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
@@ -505,14 +262,17 @@ function calculateDiet(userData) {
             totalCarboInDiet: (firstMealResult.totalCarboInMeal + secondMealResult.totalCarboInMeal + thirdMealResult.totalCarboInMeal + fourthMealResult.totalCarboInMeal)
         }
         const fullDiet = {
-            firstMealResult,
-            secondMealResult,
-            thirdMealResult,
-            fourthMealResult,
+            meals: {
+                firstMealResult,
+                secondMealResult,
+                thirdMealResult,
+                fourthMealResult,
+            },
+
             totalMacrosInDiet
         }
-        console.log('to no 4')
-        console.table(fullDiet)
+
+
         return fullDiet;
     } else if (userData.numberOfMeals == 5) {
         const firstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
@@ -536,15 +296,17 @@ function calculateDiet(userData) {
             totalCarboInDiet: (firstMealResult.totalCarboInMeal + secondMealResult.totalCarboInMeal + thirdMealResult.totalCarboInMeal + fourthMealResult.totalCarboInMeal + fifthMealResult.totalCarboInMeal)
         }
         const fullDiet = {
-            firstMealResult,
-            secondMealResult,
-            thirdMealResult,
-            fourthMealResult,
-            fifthMealResult,
+            meals: {
+                firstMealResult,
+                secondMealResult,
+                thirdMealResult,
+                fourthMealResult,
+                fifthMealResult,
+            },
             totalMacrosInDiet
         }
-        console.log('to no 5')
-        console.table(fullDiet)
+
+
         return fullDiet;
     } else {
         const firstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
@@ -566,24 +328,21 @@ function calculateDiet(userData) {
             totalCarboInDiet: (firstMealResult.totalCarboInMeal + secondMealResult.totalCarboInMeal + thirdMealResult.totalCarboInMeal + fourthMealResult.totalCarboInMeal + fifthMealResult.totalCarboInMeal + sixthMealResult.totalCarboInMeal)
         }
         const fullDiet = {
-            firstMealResult,
-            secondMealResult,
-            thirdMealResult,
-            fourthMealResult,
-            sixthMealResult,
+            meals: {
+                firstMealResult,
+                secondMealResult,
+                thirdMealResult,
+                fourthMealResult,
+                sixthMealResult,
+            },
             totalMacrosInDiet
         }
-        console.log('to no 6')
-        console.table(fullDiet)
+
+
         return fullDiet;
     }
 }
-const bmr = calculateBasalMetabolicRate(userData);
-const macros = calculateTotalMacros(userData);
 
-totalProteinInMeal = macros.totalProtein
-totalLipidInMeal = macros.totalLipid
-totalCaloriesInMeal = bmr
 function numberOfMeals(numberOfMeals) {
     if (numberOfMeals == 2) {
         totalProteinFirstMeal = totalProteinInMeal * 0.5
@@ -594,13 +353,13 @@ function numberOfMeals(numberOfMeals) {
         totalLipidSecondMeal = totalLipidInMeal * 0.5
         totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.5
     } else if (numberOfMeals == 3) {
-        totalProteinFirstMeal = totalProteinInMeal * 0.30
-        totalLipidFirstMeal = totalLipidInMeal * 0.30
-        totalCaloriesFirstMeal = totalCaloriesInMeal * 0.30
+        totalProteinFirstMeal = totalProteinInMeal * 0.33
+        totalLipidFirstMeal = totalLipidInMeal * 0.33
+        totalCaloriesFirstMeal = totalCaloriesInMeal * 0.33
 
-        totalProteinSecondMeal = totalProteinInMeal * 0.35
-        totalLipidSecondMeal = totalLipidInMeal * 0.35
-        totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.35
+        totalProteinSecondMeal = totalProteinInMeal * 0.33
+        totalLipidSecondMeal = totalLipidInMeal * 0.33
+        totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.33
 
     }
     else if (numberOfMeals == 4) {
@@ -655,24 +414,3 @@ function numberOfMeals(numberOfMeals) {
     }
 }
 
-exports.diet = functions.database.ref('/user/{id}').onCreate((snapshot, context) => {
-    const userData = snapshot.val();
-    const bmr = calculateBasalMetabolicRate(userData);
-    const macros = calculateTotalMacros(userData);
-
-    const diet = calculateDiet(userData);
-    return snapshot.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
-
-});
-
-exports.dietUpdate = functions.database.ref('/user/{id}').onUpdate((change, context) => {
-    if (!change.after.exists()) {
-        return null;
-    }
-    const userData = change.after.val();
-    const bmr = calculateBasalMetabolicRate(userData);
-    const macros = calculateTotalMacros(userData);
-
-    const diet = calculateDiet(userData);
-    return change.after.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
-});

@@ -1,0 +1,220 @@
+{
+    "firstMealResult": {
+        "totalKcal": 500.4332508032762,
+        "proteinSource": 73,
+        "lipidSource": 29,
+        "carboSource": 175,
+        "foods": [
+            {
+                "baseQuantity": 100,
+                "base_unit": "g",
+                "carbohydrate": 0,
+                "category_id": 6,
+                "description": "Frango, peito, sem pele, cozido",
+                "energyInKcal": 162.874763346314,
+                "fiber": 0,
+                "highProtein": true,
+                "id": 408,
+                "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/frango-peito-grelhado.jpg?alt=media&token=71e89715-68b0-42f6-be94-496faba9efff",
+                "lipid": 3.16,
+                "protein": 31.46875
+            },
+            {
+                "baseQuantity": 100,
+                "base_unit": "g",
+                "carbohydrate": 29.134966000557,
+                "category_id": 15,
+                "description": "Castanha-de-caju, torrada, salgada",
+                "energyInKcal": 570.167626501619,
+                "fiber": 3.663,
+                "highLipid": true,
+                "id": 588,
+                "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/castanha-caju.jpg?alt=media&token=4c4cfe2b-8689-4170-b2c7-0d9c6fa04cf3",
+                "lipid": 46.2796666666667,
+                "protein": 18.5093673327764
+            },
+            {
+                "baseQuantity": 100,
+                "base_unit": "g",
+                "carbohydrate": 25.80975,
+                "category_id": 1,
+                "description": "Arroz, integral, cozido",
+                "energyInKcal": 123.5348925,
+                "fiber": 2.74933333333333,
+                "highCarb": true,
+                "id": 1,
+                "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/arroz-integral.jpg?alt=media&token=d5cae75f-ab6b-4bea-9c2f-c310122cf303",
+                "lipid": 1.00033333333333,
+                "protein": 2.58825
+            }
+        ],
+        "totalProteinInMeal": 32.869341526505536,
+        "totalLipidInMeal": 17.478486666666672,
+        "totalCarboInMeal": 53.61620264016147
+    },
+    "secondMealResult": {
+        "totalKcal": 750.4496945333278,
+        "proteinSource": 118,
+        "lipidSource": 15,
+        "carboSource": 280,
+        "foods": [
+            {
+                "baseQuantity": 100,
+                "base_unit": "g",
+                "carbohydrate": 0,
+                "category_id": 6,
+                "description": "Carne, bovina, patinho, sem gordura, grelhado",
+                "energyInKcal": 219.259266666667,
+                "fiber": 0,
+                "highProtein": true,
+                "id": 377,
+                "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/bovino-grelhado.jpg?alt=media&token=8a278a7e-89ff-49d0-a17f-e3e7b14783c3",
+                "lipid": 7.31333333333333,
+                "protein": 35.9
+            },
+            {
+                "baseQuantity": 100,
+                "base_unit": "g",
+                "carbohydrate": 28.05985,
+                "category_id": 1,
+                "description": "Arroz, tipo 1, cozido",
+                "energyInKcal": 128.258485666667,
+                "fiber": 1.561,
+                "highCarb": true,
+                "isInMainMeal": true,
+                "id": 3,
+                "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/arroz-branco.jpg?alt=media&token=ab13cc9b-9497-43e5-a79f-647015cb8e9d",
+                "lipid": 0.227,
+                "protein": 2.52081666666667
+            },
+            {
+                "baseQuantity": 100,
+                "base_unit": "g",
+                "carbohydrate": 0,
+                "category_id": 4,
+                "description": "Azeite oliva, extra virgem",
+                "energyInKcal": 884,
+                "fiber": 0,
+                "highLipid": true,
+                "isInMainMeal": true,
+                "id": 260,
+                "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/azeite-oliva.jpg?alt=media&token=4a7b3407-9257-4717-836f-c4f81740729e",
+                "lipid": 100,
+                "protein": 0
+            }
+        ],
+        "totalProteinInMeal": 49.42028666666646,
+        "totalLipidInMeal": 24.26533333333315,
+        "totalCarboInMeal": 78.56758000000022
+    },
+    "thirdMealResult": {
+        "totalKcal": 500.01596633333247,
+        "proteinSource": 110,
+        "lipidSource": 10,
+        "carboSource": 124,
+        "foods": [
+            {
+                "baseQuantity": 100,
+                "base_unit": "g",
+                "carbohydrate": 0,
+                "category_id": 4,
+                "description": "Azeite, de oliva, extra virgem",
+                "energyInKcal": 884,
+                "fiber": 0,
+                "highLipid": true,
+                "id": 260,
+                "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/azeite-oliva.jpg?alt=media&token=4a7b3407-9257-4717-836f-c4f81740729e",
+                "lipid": 100,
+                "protein": 0
+            },
+            {
+                "baseQuantity": 100,
+                "base_unit": "g",
+                "carbohydrate": 30.09,
+                "category_id": 2,
+                "description": "Mandioca, cozida",
+                "energyInKcal": 125.35825,
+                "fiber": 1.55666666666667,
+                "highCarb": true,
+                "id": 129,
+                "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/mandioca-cozida.jpg?alt=media&token=48631a39-3b12-4131-be0d-f087d3b78ef3",
+                "lipid": 0.298333333333333,
+                "protein": 0.575
+            },
+            {
+                "baseQuantity": 100,
+                "base_unit": "g",
+                "carbohydrate": 0,
+                "category_id": 6,
+                "description": "Frango, sobrecoxa, sem pele, assada",
+                "energyInKcal": 232.883396666667,
+                "fiber": 0,
+                "highProtein": true,
+                "id": 413,
+                "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/frango-sobrecoxa.jpg?alt=media&token=1f27ee09-4415-4873-ae90-749ae42536f9",
+                "lipid": 12.0073333333333,
+                "protein": 29.175
+            }
+        ],
+        "totalProteinInMeal": 32.80549999999992,
+        "totalLipidInMeal": 23.57799999999992,
+        "totalCarboInMeal": 37.31159999999992
+    },
+    "fourthMealResult": {
+        "totalKcal": 749.4305723567305,
+        "proteinSource": 116,
+        "lipidSource": 11,
+        "carboSource": 375,
+        "foods": [
+            {
+                "baseQuantity": 100,
+                "base_unit": "g",
+                "carbohydrate": 0,
+                "category_id": 6,
+                "description": "Frango, peito, sem pele, cozido",
+                "energyInKcal": 162.874763346314,
+                "fiber": 0,
+                "highProtein": true,
+                "id": 408,
+                "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/frango-peito-grelhado.jpg?alt=media&token=71e89715-68b0-42f6-be94-496faba9efff",
+                "lipid": 3.16,
+                "protein": 31.46875
+            },
+            {
+                "baseQuantity": 100,
+                "base_unit": "g",
+                "carbohydrate": 25.80975,
+                "category_id": 1,
+                "description": "Arroz, integral, cozido",
+                "energyInKcal": 123.5348925,
+                "fiber": 2.74933333333333,
+                "highCarb": true,
+                "id": 1,
+                "lipid": 1.00033333333333,
+                "protein": 2.58825
+            },
+            {
+                "baseQuantity": 100,
+                "base_unit": "g",
+                "carbohydrate": 0,
+                "category_id": 4,
+                "description": "Azeite, de oliva, extra virgem",
+                "energyInKcal": 884,
+                "fiber": 0,
+                "highLipid": true,
+                "id": 260,
+                "lipid": 100,
+                "protein": 0
+            }
+        ],
+        "totalProteinInMeal": 46.20968750000063,
+        "totalLipidInMeal": 18.41684999999995,
+        "totalCarboInMeal": 96.78656250000053
+    },
+    "totalMacrosInDiet": {
+        "totalCaloriesInDiet": 2500.329484026667,
+        "totalProteinInDiet": 161.30481569317254,
+        "totalLipidInDiet": 83.7386699999997,
+        "totalCarboInDiet": 266.2819451401621
+    }
+}
