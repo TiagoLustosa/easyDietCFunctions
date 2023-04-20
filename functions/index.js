@@ -199,18 +199,18 @@ function calculateDiet(userData) {
     numberOfMeals(userData.numberOfMeals)
     if (userData.numberOfMeals == 2) {
 
-        const firstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
-        const secondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
+        const aFirstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
+        const bSecondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
         const totalMacrosInDiet = {
-            totalCaloriesInDiet: (firstMealResult.totalKcal + secondMealResult.totalKcal),
-            totalProteinInDiet: (firstMealResult.totalProteinInMeal + secondMealResult.totalProteinInMeal),
-            totalLipidInDiet: (firstMealResult.totalLipidInMeal + secondMealResult.totalLipidInMeal),
-            totalCarboInDiet: (firstMealResult.totalCarboInMeal + secondMealResult.totalCarboInMeal)
+            totalCaloriesInDiet: (aFirstMealResult.totalKcal + bSecondMealResult.totalKcal),
+            totalProteinInDiet: (aFirstMealResult.totalProteinInMeal + bSecondMealResult.totalProteinInMeal),
+            totalLipidInDiet: (aFirstMealResult.totalLipidInMeal + bSecondMealResult.totalLipidInMeal),
+            totalCarboInDiet: (aFirstMealResult.totalCarboInMeal + bSecondMealResult.totalCarboInMeal)
         }
         const fullDiet = {
             meals: {
-                firstMealResult,
-                secondMealResult,
+                aFirstMealResult,
+                bSecondMealResult,
             },
             totalMacrosInDiet
         }
@@ -218,28 +218,28 @@ function calculateDiet(userData) {
         return fullDiet;
     } else if (userData.numberOfMeals == 3) {
 
-        const firstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
-        const secondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
+        const aFirstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
+        const bSecondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
 
-        totalProteinInThirdMeal = totalProteinInMeal - (firstMealResult.totalProteinInMeal + secondMealResult.totalProteinInMeal)
-        totalLipidInThirdMeal = totalLipidInMeal - (firstMealResult.totalLipidInMeal + secondMealResult.totalLipidInMeal)
-        totalCaloriesInThirdMeal = totalCaloriesInMeal - (firstMealResult.totalKcal + secondMealResult.totalKcal)
-
-
+        totalProteinInThirdMeal = totalProteinInMeal - (aFirstMealResult.totalProteinInMeal + bSecondMealResult.totalProteinInMeal)
+        totalLipidInThirdMeal = totalLipidInMeal - (aFirstMealResult.totalLipidInMeal + bSecondMealResult.totalLipidInMeal)
+        totalCaloriesInThirdMeal = totalCaloriesInMeal - (aFirstMealResult.totalKcal + bSecondMealResult.totalKcal)
 
 
-        const thirdMealResult = calculateMeal(userData.thirdMealFoodList, totalProteinInThirdMeal, totalLipidInThirdMeal, totalCaloriesInThirdMeal)
+
+
+        const cThirdMealResult = calculateMeal(userData.thirdMealFoodList, totalProteinInThirdMeal, totalLipidInThirdMeal, totalCaloriesInThirdMeal)
         const totalMacrosInDiet = {
-            totalCaloriesInDiet: (firstMealResult.totalKcal + secondMealResult.totalKcal + thirdMealResult.totalKcal),
-            totalProteinInDiet: (firstMealResult.totalProteinInMeal + secondMealResult.totalProteinInMeal + thirdMealResult.totalProteinInMeal),
-            totalLipidInDiet: (firstMealResult.totalLipidInMeal + secondMealResult.totalLipidInMeal + thirdMealResult.totalLipidInMeal),
-            totalCarboInDiet: (firstMealResult.totalCarboInMeal + secondMealResult.totalCarboInMeal + thirdMealResult.totalCarboInMeal)
+            totalCaloriesInDiet: (aFirstMealResult.totalKcal + bSecondMealResult.totalKcal + cThirdMealResult.totalKcal),
+            totalProteinInDiet: (aFirstMealResult.totalProteinInMeal + bSecondMealResult.totalProteinInMeal + cThirdMealResult.totalProteinInMeal),
+            totalLipidInDiet: (aFirstMealResult.totalLipidInMeal + bSecondMealResult.totalLipidInMeal + cThirdMealResult.totalLipidInMeal),
+            totalCarboInDiet: (aFirstMealResult.totalCarboInMeal + bSecondMealResult.totalCarboInMeal + cThirdMealResult.totalCarboInMeal)
         }
         const fullDiet = {
             meals: {
-                firstMealResult,
-                secondMealResult,
-                thirdMealResult,
+                aFirstMealResult,
+                bSecondMealResult,
+                cThirdMealResult,
             },
             totalMacrosInDiet
         }
@@ -248,29 +248,29 @@ function calculateDiet(userData) {
         return fullDiet;
     }
     else if (userData.numberOfMeals == 4 || userData.numberOfMeals == null) {
-        const firstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
+        const aFirstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
 
-        const secondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
+        const bSecondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
 
 
-        const thirdMealResult = calculateMeal(userData.thirdMealFoodList, totalProteinThirdMeal, totalLipidThirdMeal, totalCaloriesInThirdMeal)
-        totalProteinInFourthMeal = totalProteinInMeal - (firstMealResult.totalProteinInMeal + secondMealResult.totalProteinInMeal + thirdMealResult.totalProteinInMeal)
-        totalLipidInFourthMeal = totalLipidInMeal - (firstMealResult.totalLipidInMeal + secondMealResult.totalLipidInMeal + thirdMealResult.totalLipidInMeal)
-        totalCaloriesInFourthMeal = totalCaloriesInMeal - (firstMealResult.totalKcal + secondMealResult.totalKcal + thirdMealResult.totalKcal)
-        const fourthMealResult = calculateMeal(userData.fourthMealFoodList, totalProteinInFourthMeal, totalLipidInFourthMeal, totalCaloriesInFourthMeal)
+        const cThirdMealResult = calculateMeal(userData.thirdMealFoodList, totalProteinThirdMeal, totalLipidThirdMeal, totalCaloriesInThirdMeal)
+        totalProteinInFourthMeal = totalProteinInMeal - (aFirstMealResult.totalProteinInMeal + bSecondMealResult.totalProteinInMeal + cThirdMealResult.totalProteinInMeal)
+        totalLipidInFourthMeal = totalLipidInMeal - (aFirstMealResult.totalLipidInMeal + bSecondMealResult.totalLipidInMeal + cThirdMealResult.totalLipidInMeal)
+        totalCaloriesInFourthMeal = totalCaloriesInMeal - (aFirstMealResult.totalKcal + bSecondMealResult.totalKcal + cThirdMealResult.totalKcal)
+        const dFourthMealResult = calculateMeal(userData.fourthMealFoodList, totalProteinInFourthMeal, totalLipidInFourthMeal, totalCaloriesInFourthMeal)
 
         const totalMacrosInDiet = {
-            totalCaloriesInDiet: (firstMealResult.totalKcal + secondMealResult.totalKcal + thirdMealResult.totalKcal + fourthMealResult.totalKcal),
-            totalProteinInDiet: (firstMealResult.totalProteinInMeal + secondMealResult.totalProteinInMeal + thirdMealResult.totalProteinInMeal + fourthMealResult.totalProteinInMeal),
-            totalLipidInDiet: (firstMealResult.totalLipidInMeal + secondMealResult.totalLipidInMeal + thirdMealResult.totalLipidInMeal + fourthMealResult.totalLipidInMeal),
-            totalCarboInDiet: (firstMealResult.totalCarboInMeal + secondMealResult.totalCarboInMeal + thirdMealResult.totalCarboInMeal + fourthMealResult.totalCarboInMeal)
+            totalCaloriesInDiet: (aFirstMealResult.totalKcal + bSecondMealResult.totalKcal + cThirdMealResult.totalKcal + dFourthMealResult.totalKcal),
+            totalProteinInDiet: (aFirstMealResult.totalProteinInMeal + bSecondMealResult.totalProteinInMeal + cThirdMealResult.totalProteinInMeal + dFourthMealResult.totalProteinInMeal),
+            totalLipidInDiet: (aFirstMealResult.totalLipidInMeal + bSecondMealResult.totalLipidInMeal + cThirdMealResult.totalLipidInMeal + dFourthMealResult.totalLipidInMeal),
+            totalCarboInDiet: (aFirstMealResult.totalCarboInMeal + bSecondMealResult.totalCarboInMeal + cThirdMealResult.totalCarboInMeal + dFourthMealResult.totalCarboInMeal)
         }
         const fullDiet = {
             meals: {
-                firstMealResult,
-                secondMealResult,
-                thirdMealResult,
-                fourthMealResult,
+                aFirstMealResult,
+                bSecondMealResult,
+                cThirdMealResult,
+                dFourthMealResult,
             },
 
             totalMacrosInDiet
@@ -279,33 +279,33 @@ function calculateDiet(userData) {
 
         return fullDiet;
     } else if (userData.numberOfMeals == 5) {
-        const firstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
+        const aFirstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
 
-        const secondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
+        const bSecondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
 
 
-        const thirdMealResult = calculateMeal(userData.thirdMealFoodList, totalProteinThirdMeal, totalLipidThirdMeal, totalCaloriesInThirdMeal)
-        const fourthMealResult = calculateMeal(userData.fourthMealFoodList, totalProteinFourthMeal, totalLipidFourthMeal, totalCaloriesInFourthMeal)
+        const cThirdMealResult = calculateMeal(userData.thirdMealFoodList, totalProteinThirdMeal, totalLipidThirdMeal, totalCaloriesInThirdMeal)
+        const dFourthMealResult = calculateMeal(userData.fourthMealFoodList, totalProteinFourthMeal, totalLipidFourthMeal, totalCaloriesInFourthMeal)
 
-        totalProteinInFifthMeal = totalProteinInMeal - (firstMealResult.totalProteinInMeal + secondMealResult.totalProteinInMeal + thirdMealResult.totalProteinInMeal + fourthMealResult.totalProteinInMeal)
-        totalLipidInFifthMeal = totalLipidInMeal - (firstMealResult.totalLipidInMeal + secondMealResult.totalLipidInMeal + thirdMealResult.totalLipidInMeal + fourthMealResult.totalLipidInMeal)
-        totalCaloriesInFifthMeal = totalCaloriesInMeal - (firstMealResult.totalKcal + secondMealResult.totalKcal + thirdMealResult.totalKcal + fourthMealResult.totalKcal)
+        totalProteinInFifthMeal = totalProteinInMeal - (aFirstMealResult.totalProteinInMeal + bSecondMealResult.totalProteinInMeal + cThirdMealResult.totalProteinInMeal + dFourthMealResult.totalProteinInMeal)
+        totalLipidInFifthMeal = totalLipidInMeal - (aFirstMealResult.totalLipidInMeal + bSecondMealResult.totalLipidInMeal + cThirdMealResult.totalLipidInMeal + dFourthMealResult.totalLipidInMeal)
+        totalCaloriesInFifthMeal = totalCaloriesInMeal - (aFirstMealResult.totalKcal + bSecondMealResult.totalKcal + cThirdMealResult.totalKcal + dFourthMealResult.totalKcal)
 
-        const fifthMealResult = calculateMeal(userData.fifthMealFoodList, totalProteinInFifthMeal, totalLipidInFifthMeal, totalCaloriesInFifthMeal)
+        const eFifthMealResult = calculateMeal(userData.fifthMealFoodList, totalProteinInFifthMeal, totalLipidInFifthMeal, totalCaloriesInFifthMeal)
 
         const totalMacrosInDiet = {
-            totalCaloriesInDiet: (firstMealResult.totalKcal + secondMealResult.totalKcal + thirdMealResult.totalKcal + fourthMealResult.totalKcal + fifthMealResult.totalKcal),
-            totalProteinInDiet: (firstMealResult.totalProteinInMeal + secondMealResult.totalProteinInMeal + thirdMealResult.totalProteinInMeal + fourthMealResult.totalProteinInMeal + fifthMealResult.totalProteinInMeal),
-            totalLipidInDiet: (firstMealResult.totalLipidInMeal + secondMealResult.totalLipidInMeal + thirdMealResult.totalLipidInMeal + fourthMealResult.totalLipidInMeal + fifthMealResult.totalLipidInMeal),
-            totalCarboInDiet: (firstMealResult.totalCarboInMeal + secondMealResult.totalCarboInMeal + thirdMealResult.totalCarboInMeal + fourthMealResult.totalCarboInMeal + fifthMealResult.totalCarboInMeal)
+            totalCaloriesInDiet: (aFirstMealResult.totalKcal + bSecondMealResult.totalKcal + cThirdMealResult.totalKcal + dFourthMealResult.totalKcal + eFifthMealResult.totalKcal),
+            totalProteinInDiet: (aFirstMealResult.totalProteinInMeal + bSecondMealResult.totalProteinInMeal + cThirdMealResult.totalProteinInMeal + dFourthMealResult.totalProteinInMeal + eFifthMealResult.totalProteinInMeal),
+            totalLipidInDiet: (aFirstMealResult.totalLipidInMeal + bSecondMealResult.totalLipidInMeal + cThirdMealResult.totalLipidInMeal + dFourthMealResult.totalLipidInMeal + eFifthMealResult.totalLipidInMeal),
+            totalCarboInDiet: (aFirstMealResult.totalCarboInMeal + bSecondMealResult.totalCarboInMeal + cThirdMealResult.totalCarboInMeal + dFourthMealResult.totalCarboInMeal + eFifthMealResult.totalCarboInMeal)
         }
         const fullDiet = {
             meals: {
-                firstMealResult,
-                secondMealResult,
-                thirdMealResult,
-                fourthMealResult,
-                fifthMealResult,
+                aFirstMealResult,
+                bSecondMealResult,
+                cThirdMealResult,
+                dFourthMealResult,
+                eFifthMealResult,
             },
             totalMacrosInDiet
         }
@@ -313,32 +313,32 @@ function calculateDiet(userData) {
 
         return fullDiet;
     } else {
-        const firstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
-        const secondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
-        const thirdMealResult = calculateMeal(userData.thirdMealFoodList, totalProteinThirdMeal, totalLipidThirdMeal, totalCaloriesInThirdMeal)
-        const fourthMealResult = calculateMeal(userData.fourthMealFoodList, totalProteinFourthMeal, totalLipidFourthMeal, totalCaloriesInFourthMeal)
-        const fifthMealResult = calculateMeal(userData.fifthMealFoodList, totalProteinFifthMeal, totalLipidFifthMeal, totalCaloriesInFifthMeal)
+        const aFirstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
+        const bSecondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
+        const cThirdMealResult = calculateMeal(userData.thirdMealFoodList, totalProteinThirdMeal, totalLipidThirdMeal, totalCaloriesInThirdMeal)
+        const dFourthMealResult = calculateMeal(userData.fourthMealFoodList, totalProteinFourthMeal, totalLipidFourthMeal, totalCaloriesInFourthMeal)
+        const eFifthMealResult = calculateMeal(userData.fifthMealFoodList, totalProteinFifthMeal, totalLipidFifthMeal, totalCaloriesInFifthMeal)
 
-        totalProteinInSixthMeal = totalProteinInMeal - (firstMealResult.totalProteinInMeal + secondMealResult.totalProteinInMeal + thirdMealResult.totalProteinInMeal + fourthMealResult.totalProteinInMeal + fifthMealResult.totalProteinInMeal)
-        totalLipidInSixthMeal = totalLipidInMeal - (firstMealResult.totalLipidInMeal + secondMealResult.totalLipidInMeal + thirdMealResult.totalLipidInMeal + fourthMealResult.totalLipidInMeal + fifthMealResult.totalLipidInMeal)
-        totalCaloriesInSixthMeal = totalCaloriesInMeal - (firstMealResult.totalKcal + secondMealResult.totalKcal + thirdMealResult.totalKcal + fourthMealResult.totalKcal + fifthMealResult.totalKcal)
+        totalProteinInSixthMeal = totalProteinInMeal - (aFirstMealResult.totalProteinInMeal + bSecondMealResult.totalProteinInMeal + cThirdMealResult.totalProteinInMeal + dFourthMealResult.totalProteinInMeal + eFifthMealResult.totalProteinInMeal)
+        totalLipidInSixthMeal = totalLipidInMeal - (aFirstMealResult.totalLipidInMeal + bSecondMealResult.totalLipidInMeal + cThirdMealResult.totalLipidInMeal + dFourthMealResult.totalLipidInMeal + eFifthMealResult.totalLipidInMeal)
+        totalCaloriesInSixthMeal = totalCaloriesInMeal - (aFirstMealResult.totalKcal + bSecondMealResult.totalKcal + cThirdMealResult.totalKcal + dFourthMealResult.totalKcal + eFifthMealResult.totalKcal)
 
-        const sixthMealResult = calculateMeal(userData.fifthMealFoodList, totalProteinInSixthMeal, totalLipidInSixthMeal, totalCaloriesInSixthMeal)
+        const fSixthMealResult = calculateMeal(userData.fifthMealFoodList, totalProteinInSixthMeal, totalLipidInSixthMeal, totalCaloriesInSixthMeal)
 
         const totalMacrosInDiet = {
-            totalCaloriesInDiet: (firstMealResult.totalKcal + secondMealResult.totalKcal + thirdMealResult.totalKcal + fourthMealResult.totalKcal + fifthMealResult.totalKcal + sixthMealResult.totalKcal),
-            totalProteinInDiet: (firstMealResult.totalProteinInMeal + secondMealResult.totalProteinInMeal + thirdMealResult.totalProteinInMeal + fourthMealResult.totalProteinInMeal + fifthMealResult.totalProteinInMeal + sixthMealResult.totalProteinInMeal),
-            totalLipidInDiet: (firstMealResult.totalLipidInMeal + secondMealResult.totalLipidInMeal + thirdMealResult.totalLipidInMeal + fourthMealResult.totalLipidInMeal + fifthMealResult.totalLipidInMeal + sixthMealResult.totalLipidInMeal),
-            totalCarboInDiet: (firstMealResult.totalCarboInMeal + secondMealResult.totalCarboInMeal + thirdMealResult.totalCarboInMeal + fourthMealResult.totalCarboInMeal + fifthMealResult.totalCarboInMeal + sixthMealResult.totalCarboInMeal)
+            totalCaloriesInDiet: (aFirstMealResult.totalKcal + bSecondMealResult.totalKcal + cThirdMealResult.totalKcal + dFourthMealResult.totalKcal + eFifthMealResult.totalKcal + fSixthMealResult.totalKcal),
+            totalProteinInDiet: (aFirstMealResult.totalProteinInMeal + bSecondMealResult.totalProteinInMeal + cThirdMealResult.totalProteinInMeal + dFourthMealResult.totalProteinInMeal + eFifthMealResult.totalProteinInMeal + fSixthMealResult.totalProteinInMeal),
+            totalLipidInDiet: (aFirstMealResult.totalLipidInMeal + bSecondMealResult.totalLipidInMeal + cThirdMealResult.totalLipidInMeal + dFourthMealResult.totalLipidInMeal + eFifthMealResult.totalLipidInMeal + fSixthMealResult.totalLipidInMeal),
+            totalCarboInDiet: (aFirstMealResult.totalCarboInMeal + bSecondMealResult.totalCarboInMeal + cThirdMealResult.totalCarboInMeal + dFourthMealResult.totalCarboInMeal + eFifthMealResult.totalCarboInMeal + fSixthMealResult.totalCarboInMeal)
         }
         const fullDiet = {
             meals: {
-                firstMealResult,
-                secondMealResult,
-                thirdMealResult,
-                fourthMealResult,
-                fifthMealResult,
-                sixthMealResult,
+                aFirstMealResult,
+                bSecondMealResult,
+                cThirdMealResult,
+                dFourthMealResult,
+                eFifthMealResult,
+                fSixthMealResult,
             },
             totalMacrosInDiet
         }
