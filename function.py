@@ -465,18 +465,37 @@ def calculateDiet(userData):
 
         return fullDiet
     elif (userData['numberOfMeals'] == 5):
-        aFirstMealResult = calculateMeal(userData['firstMealFoodList'], totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
+        if (userData['isPickedAmount'] == True):
+            aFirstMealResult = calculateMealPickedAmount(userData['firstMealFoodList'])
 
-        bSecondMealResult = calculateMeal(userData['secondMealFoodList'], totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
+            bSecondMealResult = calculateMealPickedAmount(userData['secondMealFoodList'])
 
-        cThirdMealResult = calculateMeal(userData['thirdMealFoodList'], totalProteinThirdMeal, totalLipidThirdMeal, totalCaloriesInThirdMeal)
-        dFourthMealResult = calculateMeal(userData['fourthMealFoodList'], totalProteinFourthMeal, totalLipidFourthMeal, totalCaloriesInFourthMeal)
+            cThirdMealResult = calculateMealPickedAmount(userData['firstMealFoodList'])
 
-        totalProteinInFifthMeal = totalProteinInMeal - (aFirstMealResult['totalProteinInMeal'] + bSecondMealResult['totalProteinInMeal'] + cThirdMealResult['totalProteinInMeal'] + dFourthMealResult['totalProteinInMeal'])
-        totalLipidInFifthMeal = totalLipidInMeal - (aFirstMealResult['totalLipidInMeal'] + bSecondMealResult['totalLipidInMeal'] + cThirdMealResult['totalLipidInMeal'] + dFourthMealResult['totalLipidInMeal'])
-        totalCaloriesInFifthMeal = totalCaloriesInMeal - (aFirstMealResult['totalKcal'] + bSecondMealResult['totalKcal'] + cThirdMealResult['totalKcal'] + dFourthMealResult['totalKcal'])
+            totalProteinInFourthMeal =( totalProteinInMeal - (aFirstMealResult['totalProteinInMeal'] + bSecondMealResult['totalProteinInMeal'] + cThirdMealResult['totalProteinInMeal']) )/ 2
+            totalLipidInFourthMeal = (totalLipidInMeal - (aFirstMealResult['totalLipidInMeal'] + bSecondMealResult['totalLipidInMeal'] + cThirdMealResult['totalLipidInMeal'])) / 2
+            totalCaloriesInFourthMeal = (totalCaloriesInMeal - (aFirstMealResult['totalKcal'] + bSecondMealResult['totalKcal'] + cThirdMealResult['totalKcal']) )/ 2
 
-        eFifthMealResult = calculateMeal(userData['fifthMealFoodList'], totalProteinInFifthMeal, totalLipidInFifthMeal, totalCaloriesInFifthMeal)
+            dFourthMealResult = calculateMeal(userData['fourthMealFoodList'], totalProteinInFourthMeal, totalLipidInFourthMeal, totalCaloriesInFourthMeal)
+
+            totalProteinInFifthMeal = totalProteinInMeal - (aFirstMealResult['totalProteinInMeal'] + bSecondMealResult['totalProteinInMeal'] + cThirdMealResult['totalProteinInMeal'] + dFourthMealResult['totalProteinInMeal'])
+            totalLipidInFifthMeal = totalLipidInMeal - (aFirstMealResult['totalLipidInMeal'] + bSecondMealResult['totalLipidInMeal'] + cThirdMealResult['totalLipidInMeal'] + dFourthMealResult['totalLipidInMeal'])
+            totalCaloriesInFifthMeal = totalCaloriesInMeal - (aFirstMealResult['totalKcal'] + bSecondMealResult['totalKcal'] + cThirdMealResult['totalKcal'] + dFourthMealResult['totalKcal'])
+
+            eFifthMealResult = calculateMeal(userData['fifthMealFoodList'], totalProteinInFifthMeal, totalLipidInFifthMeal, totalCaloriesInFifthMeal)
+        else:
+            aFirstMealResult = calculateMeal(userData['firstMealFoodList'], totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
+
+            bSecondMealResult = calculateMeal(userData['secondMealFoodList'], totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
+
+            cThirdMealResult = calculateMeal(userData['thirdMealFoodList'], totalProteinThirdMeal, totalLipidThirdMeal, totalCaloriesInThirdMeal)
+            dFourthMealResult = calculateMeal(userData['fourthMealFoodList'], totalProteinFourthMeal, totalLipidFourthMeal, totalCaloriesInFourthMeal)
+
+            totalProteinInFifthMeal = totalProteinInMeal - (aFirstMealResult['totalProteinInMeal'] + bSecondMealResult['totalProteinInMeal'] + cThirdMealResult['totalProteinInMeal'] + dFourthMealResult['totalProteinInMeal'])
+            totalLipidInFifthMeal = totalLipidInMeal - (aFirstMealResult['totalLipidInMeal'] + bSecondMealResult['totalLipidInMeal'] + cThirdMealResult['totalLipidInMeal'] + dFourthMealResult['totalLipidInMeal'])
+            totalCaloriesInFifthMeal = totalCaloriesInMeal - (aFirstMealResult['totalKcal'] + bSecondMealResult['totalKcal'] + cThirdMealResult['totalKcal'] + dFourthMealResult['totalKcal'])
+
+            eFifthMealResult = calculateMeal(userData['fifthMealFoodList'], totalProteinInFifthMeal, totalLipidInFifthMeal, totalCaloriesInFifthMeal)
 
         totalMacrosInDiet = {
             'totalCaloriesInDiet': (aFirstMealResult['totalKcal'] + bSecondMealResult['totalKcal'] + cThirdMealResult['totalKcal'] + dFourthMealResult['totalKcal'] + eFifthMealResult['totalKcal']),
