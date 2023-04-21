@@ -246,6 +246,7 @@
         "energyInKcal": 329.870718420887,
         "fiber": 0,
         "highLipid": true,
+        "highProtein": true,
         "isInMainMeal": false,
         "id": 463,
         "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/Mussarela.jpg?alt=media&token=16132a43-caca-4ee1-9704-b50d85467319",
