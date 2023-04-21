@@ -42,17 +42,17 @@
         {
             "baseQuantity": 100,
             "base_unit": "g",
-            "carbohydrate": 58.6464347826087,
+            "carbohydrate": 81,
             "category_id": 1,
-            "description": "Pão francês",
-            "energyInKcal": 299.810150434783,
-            "fiber": 2.30666666666667,
+            "description": "Tapioca",
+            "energyInKcal": 360,
+            "fiber": 0,
             "highCarb": true,
             "isInMainMeal": false,
-            "id": 53,
-            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/PaoFrances.jpg?alt=media&token=a866137b-68bf-42b3-9edf-1062107daf6a",
-            "lipid": 3.10333333333333,
-            "protein": 7.9535652173913
+            "id": 551,
+            "image": "https://firebasestorage.googleapis.com/v0/b/easydiet-48b9e.appspot.com/o/tapioca.png?alt=media&token=2e1b0fa8-d670-42f2-b274-a8e1e1a31ff5",
+            "lipid": 0,
+            "protein": 0
         }
     ],
     "secondMealFoodList": [
