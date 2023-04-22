@@ -6,8 +6,8 @@
     "gender": "female",
     "proteinPerKilogramOfBodyWeight": 2.0,
     "dietObjective": "maintainWeight",
-    "numberOfMeals": 5,
-    "isPickedAmount": true,
+    "numberOfMeals": 6,
+    "numberOfMealsWithChosenQuantity": true,
     "firstMealFoodList": [
         {
             "baseQuantity": 100,
