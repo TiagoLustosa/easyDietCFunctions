@@ -142,7 +142,7 @@
             "highLipid": true,
             "description": "Queijo, minas, frescal",
             "energyInKcal": 264.273128,
-            "fiber": "NA",
+            "fiber": 0,
             "id": 461,
             "image": "",
             "lipid": 18.6,
