@@ -394,7 +394,7 @@ def calculateDiet(userData):
 
         return fullDiet
     elif (userData['numberOfMeals'] == 4):
-        if (userData['numberOfMealsWithChosenQuantity'] == True):
+        if (userData['numberOfMealsWithChosenQuantity'] == 2):
             aFirstMealResult = calculateMealPickedAmount(userData['firstMealFoodList'])
             totalProteinSecondMeal = (totalProteinInAllMeals - aFirstMealResult['totalProteinInMeal']) / 2
             totalLipidSecondMeal = (totalLipidInAllMeals - aFirstMealResult['totalLipidInMeal']) / 2
@@ -403,6 +403,21 @@ def calculateDiet(userData):
             bSecondMealResult = calculateMeal(userData['secondMealFoodList'], totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
 
             cThirdMealResult = calculateMealPickedAmount(userData['firstMealFoodList'])
+
+            totalProteinInFourthMeal = totalProteinInMeal - (aFirstMealResult['totalProteinInMeal'] + bSecondMealResult['totalProteinInMeal'] + cThirdMealResult['totalProteinInMeal'])
+            totalLipidInFourthMeal = totalLipidInMeal - (aFirstMealResult['totalLipidInMeal'] + bSecondMealResult['totalLipidInMeal'] + cThirdMealResult['totalLipidInMeal'])
+            totalCaloriesInFourthMeal = totalCaloriesInMeal - (aFirstMealResult['totalKcal'] + bSecondMealResult['totalKcal'] + cThirdMealResult['totalKcal'])
+
+            dFourthMealResult = calculateMeal(userData['fourthMealFoodList'], totalProteinInFourthMeal, totalLipidInFourthMeal, totalCaloriesInFourthMeal)
+        elif (userData['numberOfMealsWithChosenQuantity'] == 1):
+            aFirstMealResult = calculateMealPickedAmount(userData['firstMealFoodList'])
+            totalProteinSecondMeal = (totalProteinInAllMeals - aFirstMealResult['totalProteinInMeal']) / 3
+            totalLipidSecondMeal = (totalLipidInAllMeals - aFirstMealResult['totalLipidInMeal']) / 3
+            totalCaloriesInSecondMeal = (totalCaloriesInAllMeals - aFirstMealResult['totalKcal']) / 3
+
+            bSecondMealResult = calculateMeal(userData['secondMealFoodList'], totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
+
+            cThirdMealResult = calculateMeal(userData['thirdMealFoodList'], totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
 
             totalProteinInFourthMeal = totalProteinInMeal - (aFirstMealResult['totalProteinInMeal'] + bSecondMealResult['totalProteinInMeal'] + cThirdMealResult['totalProteinInMeal'])
             totalLipidInFourthMeal = totalLipidInMeal - (aFirstMealResult['totalLipidInMeal'] + bSecondMealResult['totalLipidInMeal'] + cThirdMealResult['totalLipidInMeal'])
@@ -580,7 +595,7 @@ def calculateDiet(userData):
             return fullDiet
 
 
-with open('C:/projects/easy_diet_cloud_functions/user_test_new_function/userDataNewFoods2.json', 'r', encoding="utf8") as input_file:
+with open('C:/projects/easy_diet_cloud_functions/user_test_new_function/userDataNewFoods4and1.json', 'r', encoding="utf8") as input_file:
     userData = json.load(input_file)
 # user = []
 # for i in userDataJson:
