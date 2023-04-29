@@ -12,7 +12,7 @@
         {
             "baseQuantity": 100,
             "base_unit": "g",
-            "pickedAmount": 1,
+            "chosenQuantity": 1,
             "amoutGramsPerUnit": 55,
             "carbohydrate": 0.614916666666674,
             "category_id": 1,
@@ -29,7 +29,7 @@
         {
             "baseQuantity": 100,
             "base_unit": "g",
-            "pickedAmount": 1,
+            "chosenQuantity": 1,
             "amoutGramsPerUnit": 20,
             "carbohydrate": 3.04933292706807,
             "category_id": 1,
@@ -47,7 +47,7 @@
         {
             "baseQuantity": 100,
             "base_unit": "g",
-            "pickedAmount": 1,
+            "chosenQuantity": 1,
             "amoutGramsPerUnit": 55,
             "carbohydrate": 58.6464347826087,
             "category_id": 1,
