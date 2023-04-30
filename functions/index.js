@@ -6,33 +6,33 @@ exports.diet = functions.database.ref('/user/{id}').onCreate((snapshot, context)
     const macros = calculateTotalMacros(userData);
 
 
-    if (context.params.id == 'QrWi0NJpQYP31S1B4mVbxFfMJ1L2' || context.params.id == 'uwzRdt1fOZYoXaFyNUZRXYpeTQ82') {
-        totalProteinInAllMeals = macros.totalProtein
-        totalLipidInAllMeals = macros.totalLipid
-        totalCaloriesInAllMeals = bmr
+    // if (context.params.id == 'QrWi0NJpQYP31S1B4mVbxFfMJ1L2' || context.params.id == 'uwzRdt1fOZYoXaFyNUZRXYpeTQ82') {
+    totalProteinInAllMeals = macros.totalProtein
+    totalLipidInAllMeals = macros.totalLipid
+    totalCaloriesInAllMeals = bmr
 
-        const diet = calculateDiet(userData);
-        return snapshot.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
-    } else {
-        totalProteinInMeal = macros.totalProtein
-        totalLipidInMeal = macros.totalLipid
-        totalCaloriesInMeal = bmr
+    const diet = calculateDiet(userData);
+    return snapshot.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+    // } else {
+    //     totalProteinInMeal = macros.totalProtein
+    //     totalLipidInMeal = macros.totalLipid
+    //     totalCaloriesInMeal = bmr
 
-        totalProteinFirstMeal = totalProteinInMeal * 0.2
-        totalLipidFirstMeal = totalLipidInMeal * 0.2
-        totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
+    //     totalProteinFirstMeal = totalProteinInMeal * 0.2
+    //     totalLipidFirstMeal = totalLipidInMeal * 0.2
+    //     totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
 
-        totalProteinSecondMeal = totalProteinInMeal * 0.3
-        totalLipidSecondMeal = totalLipidInMeal * 0.3
-        totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.3
+    //     totalProteinSecondMeal = totalProteinInMeal * 0.3
+    //     totalLipidSecondMeal = totalLipidInMeal * 0.3
+    //     totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.3
 
-        totalProteinThirdMeal = totalProteinInMeal * 0.2
-        totalLipidThirdMeal = totalLipidInMeal * 0.2
-        totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
+    //     totalProteinThirdMeal = totalProteinInMeal * 0.2
+    //     totalLipidThirdMeal = totalLipidInMeal * 0.2
+    //     totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
 
-        const diet = calculateDietFourMeals(userData);
-        return snapshot.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
-    }
+    //     const diet = calculateDietFourMeals(userData);
+    //     return snapshot.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+    // }
 
 
 });
@@ -44,32 +44,32 @@ exports.dietUpdate = functions.database.ref('/user/{id}').onUpdate((change, cont
     const userData = change.after.val();
     const bmr = calculateBasalMetabolicRate(userData);
     const macros = calculateTotalMacros(userData);
-    if (context.params.id == 'QrWi0NJpQYP31S1B4mVbxFfMJ1L2' || context.params.id == 'uwzRdt1fOZYoXaFyNUZRXYpeTQ82') {
-        totalProteinInAllMeals = macros.totalProtein
-        totalLipidInAllMeals = macros.totalLipid
-        totalCaloriesInAllMeals = bmr
-        const diet = calculateDiet(userData);
-        return change.after.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
-    } else {
-        totalProteinInMeal = macros.totalProtein
-        totalLipidInMeal = macros.totalLipid
-        totalCaloriesInMeal = bmr
+    // if (context.params.id == 'QrWi0NJpQYP31S1B4mVbxFfMJ1L2' || context.params.id == 'uwzRdt1fOZYoXaFyNUZRXYpeTQ82') {
+    totalProteinInAllMeals = macros.totalProtein
+    totalLipidInAllMeals = macros.totalLipid
+    totalCaloriesInAllMeals = bmr
+    const diet = calculateDiet(userData);
+    return change.after.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+    // } else {
+    //     totalProteinInMeal = macros.totalProtein
+    //     totalLipidInMeal = macros.totalLipid
+    //     totalCaloriesInMeal = bmr
 
-        totalProteinFirstMeal = totalProteinInMeal * 0.2
-        totalLipidFirstMeal = totalLipidInMeal * 0.2
-        totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
+    //     totalProteinFirstMeal = totalProteinInMeal * 0.2
+    //     totalLipidFirstMeal = totalLipidInMeal * 0.2
+    //     totalCaloriesFirstMeal = totalCaloriesInMeal * 0.2
 
-        totalProteinSecondMeal = totalProteinInMeal * 0.3
-        totalLipidSecondMeal = totalLipidInMeal * 0.3
-        totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.3
+    //     totalProteinSecondMeal = totalProteinInMeal * 0.3
+    //     totalLipidSecondMeal = totalLipidInMeal * 0.3
+    //     totalCaloriesInSecondMeal = totalCaloriesInMeal * 0.3
 
-        totalProteinThirdMeal = totalProteinInMeal * 0.2
-        totalLipidThirdMeal = totalLipidInMeal * 0.2
-        totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
+    //     totalProteinThirdMeal = totalProteinInMeal * 0.2
+    //     totalLipidThirdMeal = totalLipidInMeal * 0.2
+    //     totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.2
 
-        const diet = calculateDietFourMeals(userData);
-        return change.after.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
-    }
+    //     const diet = calculateDietFourMeals(userData);
+    //     return change.after.ref.parent.child(`${context.params.id}`).update({ bmr: bmr, diet: diet, macros: macros });
+    // }
 
 
 });
@@ -423,8 +423,6 @@ function calculateMealChosenQuantity(foodList) {
         totalLipidInMeal: lipidTotalInMeal,
         totalCarboInMeal: carboTotalInMeal
     }
-    console.log(mealResult.totalKcal)
-    console.log(mealResult.proteinSource)
     return mealResult
 }
 
@@ -854,19 +852,6 @@ function calculateDiet(userData) {
             return fullDiet
         }
         else {
-            aFirstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
-            totalProteinSecondMeal = (totalProteinInAllMeals) * 0.125
-            totalLipidSecondMeal = (totalLipidInAllMeals) * 0.125
-            totalCaloriesInSecondMeal = (totalCaloriesInAllMeals) * 0.125
-            totalProteinThirdMeal = totalProteinInAllMeals * 0.25
-            totalLipidThirdMeal = totalLipidInMeal * 0.25
-            totalCaloriesInThirdMeal = totalCaloriesInMeal * 0.25
-            totalProteinFourthMeal = totalProteinInAllMeals * 0.125
-            totalLipidFourthMeal = totalLipidInMeal * 0.125
-            totalCaloriesInFourthMeal = totalCaloriesInMeal * 0.125
-            totalProteinFifthMeal = totalProteinInAllMeals * 0.25
-            totalLipidFifthMeal = totalLipidInMeal * 0.25
-            totalCaloriesInFifthMeal = totalCaloriesInMeal * 0.25
 
             aFirstMealResult = calculateMeal(userData.firstMealFoodList, totalProteinFirstMeal, totalLipidFirstMeal, totalCaloriesFirstMeal)
             bSecondMealResult = calculateMeal(userData.secondMealFoodList, totalProteinSecondMeal, totalLipidSecondMeal, totalCaloriesInSecondMeal)
@@ -874,9 +859,9 @@ function calculateDiet(userData) {
             dFourthMealResult = calculateMeal(userData.fourthMealFoodList, totalProteinFourthMeal, totalLipidFourthMeal, totalCaloriesInFourthMeal)
             eFifthMealResult = calculateMeal(userData.fifthMealFoodList, totalProteinFifthMeal, totalLipidFifthMeal, totalCaloriesInFifthMeal)
 
-            totalProteinInSixthMeal = totalProteinInMeal - (aFirstMealResult.totalProteinInMeal + bSecondMealResult.totalProteinInMeal + cThirdMealResult.totalProteinInMeal + dFourthMealResult.totalProteinInMeal + eFifthMealResult.totalProteinInMeal)
-            totalLipidInSixthMeal = totalLipidInMeal - (aFirstMealResult.totalLipidInMeal + bSecondMealResult.totalLipidInMeal + cThirdMealResult.totalLipidInMeal + dFourthMealResult.totalLipidInMeal + eFifthMealResult.totalLipidInMeal)
-            totalCaloriesInSixthMeal = totalCaloriesInMeal - (aFirstMealResult.totalKcal + bSecondMealResult.totalKcal + cThirdMealResult.totalKcal + dFourthMealResult.totalKcal + eFifthMealResult.totalKcal)
+            totalProteinInSixthMeal = totalProteinInAllMeals - (aFirstMealResult.totalProteinInMeal + bSecondMealResult.totalProteinInMeal + cThirdMealResult.totalProteinInMeal + dFourthMealResult.totalProteinInMeal + eFifthMealResult.totalProteinInMeal)
+            totalLipidInSixthMeal = totalLipidInAllMeals - (aFirstMealResult.totalLipidInMeal + bSecondMealResult.totalLipidInMeal + cThirdMealResult.totalLipidInMeal + dFourthMealResult.totalLipidInMeal + eFifthMealResult.totalLipidInMeal)
+            totalCaloriesInSixthMeal = totalCaloriesInAllMeals - (aFirstMealResult.totalKcal + bSecondMealResult.totalKcal + cThirdMealResult.totalKcal + dFourthMealResult.totalKcal + eFifthMealResult.totalKcal)
 
             fSixthMealResult = calculateMeal(userData.sixthMealFoodList, totalProteinInSixthMeal, totalLipidInSixthMeal, totalCaloriesInSixthMeal)
 
