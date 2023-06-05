@@ -727,7 +727,7 @@ def calculateDiet(userData):
             return fullDiet
 
 
-with open('C:/projects/easy_diet_cloud_functions/user_test_new_function/userDataNewFoods6and0.json', 'r', encoding="utf8") as input_file:
+with open('C:/projects/easy_diet_cloud_functions/user_test_new_function/userDataNewFoods6and2.json', 'r', encoding="utf8") as input_file:
     userData = json.load(input_file)
 # user = []
 # for i in userDataJson:
